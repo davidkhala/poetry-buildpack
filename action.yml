@@ -1,6 +1,9 @@
 name: "poetry buildpack"
 description: A typical poetry build steps. Assume you have checkout source already
 
+branding:
+  icon: 'package'
+  color: 'purple'
 inputs:
   tests:
     description: Test Sources Root: working-directory of your tests
