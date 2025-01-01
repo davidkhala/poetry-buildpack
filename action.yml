@@ -1,4 +1,4 @@
-name: "poetry buildpack"
+name: "poetry-buildpack"
 description: A typical poetry build steps. Assume you have checkout source already
 
 branding:
