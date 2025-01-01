@@ -1,0 +1,21 @@
+on: push
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@main
+        - uses: davidkhala/poetry-buildpack@main
+          with:
+            working-directory: .github/build
+    tests:
+        runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            test-command: [pytest, test, 'python test.py']
+        steps:
+        - uses: actions/checkout@main
+        - uses: davidkhala/poetry-buildpack@main
+          with:
+            working-directory: .github/with-test
+            test-entry-point: ${{matrix.test-command}}
+            test: .github/with-test/tests
