@@ -6,17 +6,17 @@ branding:
   color: 'purple'
 inputs:
   tests:
-    description: Test Sources Root: working-directory of your tests
+    description: 'Test Sources Root: working-directory of your tests'
     required: false
     default: tests
   test-entry-point:
-    description: script of test command, such as pytest
+    description: 'script of test command, such as `pytest`'
     required: false
   version:
-    description: python version, such as 3.12
+    description: 'python version, such as 3.12'
     required: false
   working-directory:
-    description: poetry home path. dirname of file pyproject.toml
+    description: 'poetry home path. dirname of file pyproject.toml'
     required: true
 runs:
   using: "composite"
@@ -27,6 +27,7 @@ runs:
       python-version: ${{ inputs.version }}
   - uses: snok/install-poetry@main
   - run: poetry install --all-extras
+    working-directory: ${{inputs.working-directory}}
   - if: ${{ inputs.test-entry-point != '' }}
     run: poetry run ${{ inputs.test-entry-point }}
     working-directory: ${{ inputs.tests }}
