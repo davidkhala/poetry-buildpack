@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
           matrix:
-            test-command: [pytest, test, 'python test.py']
+            test-command: [pytest, 'python test_.py']
         steps:
         - uses: actions/checkout@main
         - uses: davidkhala/poetry-buildpack@main
