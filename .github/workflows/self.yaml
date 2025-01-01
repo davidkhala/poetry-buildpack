@@ -18,4 +18,4 @@ jobs:
           with:
             working-directory: .github/with-test
             test-entry-point: ${{matrix.test-command}}
-            test: .github/with-test/tests
+            tests: .github/with-test/tests

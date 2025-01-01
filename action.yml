@@ -28,6 +28,8 @@ runs:
   - uses: snok/install-poetry@main
   - run: poetry install --all-extras
     working-directory: ${{inputs.working-directory}}
+    shell: bash
   - if: ${{ inputs.test-entry-point != '' }}
     run: poetry run ${{ inputs.test-entry-point }}
     working-directory: ${{ inputs.tests }}
+    shell: bash
