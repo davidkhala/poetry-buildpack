@@ -10,14 +10,15 @@ inputs:
     required: false
     default: tests
   test-entry-point:
-    description: 'script of test command, such as `pytest`'
+    description: 'script of test command'
     required: false
   version:
-    description: 'python version, such as 3.12'
+    description: 'python version'
     required: false
   working-directory:
-    description: 'poetry home path. dirname of file pyproject.toml'
-    required: true
+    description: 'poetry home path'
+    required: false
+    default: .
 runs:
   using: "composite"
   steps:
