@@ -27,10 +27,14 @@ runs:
     with:
       python-version: ${{ inputs.version }}
   - uses: snok/install-poetry@main
-  - run: poetry install --all-extras
+  - run: |
+      poetry install --all-extras
+      echo working-directory=${{inputs.working-directory}}
     working-directory: ${{inputs.working-directory}}
     shell: bash # align to snok/install-poetry
   - if: ${{ inputs.test-entry-point != '' }}
-    run: poetry run ${{ inputs.test-entry-point }}
+    run: |
+      poetry run ${{ inputs.test-entry-point }}
+      echo working-directory=${{ inputs.tests }}
     working-directory: ${{ inputs.tests }}
     shell: bash # align to snok/install-poetry
