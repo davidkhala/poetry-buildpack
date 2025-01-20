@@ -11,7 +11,7 @@ steps:
     test-entry-point: echo 'test' # testing entry-point commands. such as `pytest`. If not specified, testing step will be skipped
     tests: tests # testing sources root directory.  Default `tests`
     version: 3.12 # python version. If not specified, default to runner's python version
-    extras: extra1,extra2 # extras to be installed. It should be subset of extras defined in Default to install all extras
+    extras: extra1 extra2 # extras to be installed. It should be subset of extras defined in Default to install all extras
 ```
 
 ## Design

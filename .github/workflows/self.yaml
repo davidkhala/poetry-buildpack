@@ -4,7 +4,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
           matrix:
-            extras: ['', http_request]
+            extras: ['', http_request sql, http_request]
         steps:
         - uses: actions/checkout@main
         - uses: davidkhala/poetry-buildpack@main
