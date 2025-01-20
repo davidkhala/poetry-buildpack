@@ -19,6 +19,9 @@ inputs:
     description: 'poetry home path'
     required: false
     default: .
+  extras:
+    description: 'extras to be installed'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -27,14 +30,15 @@ runs:
     with:
       python-version: ${{ inputs.version }}
   - uses: snok/install-poetry@main
-  - run: |
-      poetry install --all-extras
-      echo working-directory=${{inputs.working-directory}}
+  - if: ${{ inputs.extras != '' }}
+    run: poetry install --extras "${{inputs.extras}}"
     working-directory: ${{inputs.working-directory}}
-    shell: bash # align to snok/install-poetry
+    shell: bash
+  - if: ${{ inputs.extras == '' }}
+    run: poetry install --all-extras
+    working-directory: ${{inputs.working-directory}}
+    shell: bash
   - if: ${{ inputs.test-entry-point != '' }}
-    run: |
-      poetry run ${{ inputs.test-entry-point }}
-      echo working-directory=${{ inputs.tests }}
+    run: poetry run ${{ inputs.test-entry-point }}
     working-directory: ${{ inputs.tests }}
-    shell: bash # align to snok/install-poetry
+    shell: bash

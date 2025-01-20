@@ -5,7 +5,12 @@ package-mode = false
 python = "^3.10"
 davidkhala-utils = "*"
 
-
+# for extras
+requests = { version = "*", optional = true }
+sqlparse = { version = "*", optional = true }
+[tool.poetry.extras]
+http_request = ["requests"]
+sql = ["sqlparse"]
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
