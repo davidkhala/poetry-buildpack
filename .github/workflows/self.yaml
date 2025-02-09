@@ -1,6 +1,15 @@
+name: self test
 on: push
 jobs:
-    build:
+    os:
+        strategy:
+          matrix:
+            os: [ubuntu-latest, windows-latest, macos-latest]
+        runs-on: ${{matrix.os}}
+        steps:
+        - uses: actions/checkout@main
+        - uses: davidkhala/poetry-buildpack@main
+    extras:
         runs-on: ubuntu-latest
         strategy:
           matrix:
