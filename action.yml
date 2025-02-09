@@ -28,7 +28,7 @@ runs:
   - if: ${{ inputs.version != '' }}
     uses: actions/setup-python@main
     with:
-      python-version: ${{ inputs.version }}
+      python-version: ${{ inputs.version == 'latest' && '3.x' || inputs.version }}
   - uses: snok/install-poetry@main
   - if: ${{ inputs.extras != '' }}
     run: poetry install --extras "${{inputs.extras}}"
