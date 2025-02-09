@@ -9,6 +9,8 @@ jobs:
         steps:
         - uses: actions/checkout@main
         - uses: davidkhala/poetry-buildpack@main
+          with:
+            working-directory: .github/build
     extras:
         runs-on: ubuntu-latest
         strategy:
