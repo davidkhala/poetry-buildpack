@@ -1,5 +1,7 @@
 name: self test
-on: push
+on: 
+  push:
+  workflow_dispatch:
 jobs:
     os:
         strategy:
